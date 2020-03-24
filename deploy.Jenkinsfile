@@ -34,5 +34,9 @@ stage ('Checkout') {
 			}	
 		}				
  }
+ 
+ String getCredentialId(){
+ return 'myazure_credentials'
+ }
 }
 
