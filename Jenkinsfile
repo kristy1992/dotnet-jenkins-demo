@@ -38,7 +38,7 @@ stage('Build') {
                     bat '"C:\\Program Files\\dotnet\\dotnet.exe" publish -c release -o /app --no-restore' 
                 }
             }
-			echo ${workspace}
+			echo "${workspace}"
       }
    }				
  }
