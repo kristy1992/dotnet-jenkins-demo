@@ -9,6 +9,11 @@ Param(
 
 $TemplateFile = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine($PSScriptRoot, $TemplateFile))
 
+# Login with provided credentials
+$password = ConvertTo-SecureString $AzurePassword -AsPlainText -Force
+$psCred = New-Object System.Management.Automation.PSCredential($AzureUserName, $password) -ErrorAction Stop
+Login-AzureRmAccount -Credential $psCred -ErrorAction Stop
+
 # Check whether resourceGroup exist and if not then create one
 $resourceGroup = Get-AzureRmResourceGroup -Name $ResourceGroupName -ErrorAction SilentlyContinue
 if(!$resourceGroup)
