@@ -9,6 +9,8 @@ parameters{
 			  choices:['RG-QED-Dev'],
 			  description:'ResourceGroup Name')
 		string(name: 'ResourceGroupLocation', defaultValue: 'westus', description:'ResourceGroup Location')  
+		string(name: 'AzureUserName', defaultValue: 'kristy@nagarro.com', description:'Azure Username')  
+		string(name: 'AzurePassword', defaultValue: 'Wel@#$come@234', description:'Azure Password')  
 	}
 	
 
@@ -28,7 +30,7 @@ stage ('Checkout') {
 				}
 				retry(2){
 					
-						bat "CALL powershell.exe  -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -Command \"CICD\\deployment-azure.ps1\" -ResourceGroupName $ResourceGroup -ResourceGroupLocation $ResourceGroupLocation -AzureUserName \"kristy@nagarro.com\" -AzurePassword \"Wel@#$come@234\""
+						bat "CALL powershell.exe  -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -Command \"CICD\\deployment-azure.ps1\" -ResourceGroupName $ResourceGroup -ResourceGroupLocation $ResourceGroupLocation -AzureUserName $AzureUserName -AzurePassword $AzurePassword"
 				}
 			}	
 		}				
