@@ -9,8 +9,6 @@ parameters{
 			  choices:['RG-QED-Dev'],
 			  description:'ResourceGroup Name')
 		string(name: 'ResourceGroupLocation', defaultValue: 'westus', description:'ResourceGroup Location')  
-		string(name: 'AzureUserName', defaultValue: 'kristy@nagarro.com', description:'Azure Username')  
-		string(name: 'AzurePassword', defaultValue: 'Wel@#$come@234', description:'Azure Password')  
 	}
 	
 
@@ -29,8 +27,9 @@ stage ('Checkout') {
 					credentialId = getCredentialId()
 				}
 				retry(2){
-					
-						bat "CALL powershell.exe  -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -Command \"CICD\\deployment-azure.ps1\" -ResourceGroupName $ResourceGroup -ResourceGroupLocation $ResourceGroupLocation -AzureUserName $AzureUserName -AzurePassword $AzurePassword"
+					withCredentials([usernamePassword(credentialsId: credentialId, passwordVariable: 'AZURE_PASSWORD', usernameVariable: 'AZURE_USERNAME')]) {
+						bat "CALL powershell.exe  -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -Command \"CICD\\deployment-azure.ps1\" -ResourceGroupName $ResourceGroup -ResourceGroupLocation $ResourceGroupLocation -AzureUserName $AZURE_USERNAME -AzurePassword $AZURE_PASSWORD"
+					} 
 				}
 			}	
 		}				
