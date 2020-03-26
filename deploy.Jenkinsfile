@@ -8,7 +8,7 @@ parameters{
 		choice(name:'ResourceGroup',
 			  choices:['RG-QED-Dev'],
 			  description:'ResourceGroup Name')
-		string(name: 'ResourceGroupLocation', defaultValue: 'eastus', description:'ResourceGroup Location')  
+		string(name: 'ResourceGroupLocation', defaultValue: 'westus', description:'ResourceGroup Location')  
 	}
 	
 

@@ -4,6 +4,13 @@ agent any
 options {
     skipDefaultCheckout()
 }
+parameters{
+		choice(name:'ResourceGroup',
+			  choices:['RG-QED-Dev'],
+			  description:'ResourceGroup Name')
+		string(name: 'ResourceGroupLocation', defaultValue: 'eastus', description:'ResourceGroup Location')  
+	}
+	
 
 stages {
 stage ('Checkout') {
@@ -33,6 +40,20 @@ stage('Build') {
             }
       }
    }
+   
+  	
+		stage('Provision Resources') {	
+			steps {
+				script{
+					credentialId = getCredentialId()
+				}
+				retry(2){
+					withCredentials([usernamePassword(credentialsId: credentialId, passwordVariable: 'AZURE_PASSWORD', usernameVariable: 'AZURE_USERNAME')]) {
+						bat "CALL powershell.exe -Command \"CICD\\deployment-azure.ps1\" -ResourceGroupName $ResourceGroup -ResourceGroupLocation $ResourceGroupLocation -AzureUserName $AZURE_USERNAME -AzurePassword $AZURE_PASSWORD"
+					} 
+				}
+			}	
+		}				
  }
 }
 
