@@ -4,7 +4,7 @@ Param(
 	[string] [Parameter(Mandatory=$true)] $AzureUserName,
 	[string] [Parameter(Mandatory=$true)] $AzurePassword,
     [string] $StorageContainerName = $ResourceGroupName.ToLowerInvariant() + '-stageartifacts',
-    [string] $TemplateFile = '..\Templates\resources.json'
+    [string] $TemplateFile = '..\Templates\resources.json',
 	[string] $skuName = "Standard_LRS",
 	[string] $storageAccountName = "WebAPPArtifactsStorage",
 	[string] $ArtifactStagingDirectory = "..\Artifacts"
