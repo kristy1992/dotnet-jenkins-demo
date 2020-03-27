@@ -7,7 +7,7 @@ Param(
     [string] $StorageContainerName = $ResourceGroupName.ToLowerInvariant() + '-stageartifacts',
     [string] $TemplateFile = '..\CICD\Template\resources.json',
 	[string] $skuName = "Standard_GRS",
-	[string] $storageAccountName = "webstorageaccount",
+	[string] $storageAccountName = "demo27storageaccount",
 	[string] $ArtifactStagingDirectory = "..\Artifacts"
 	)
 	
@@ -45,7 +45,7 @@ if($OptionalParameters[$IsDeploy] -eq $true)
 												-Location $ResourceGroupLocation
 												}
 	#retrieve the context of the storage account created or existed one
-	$storageAccountContext = $storageAccount.Context
+	$storageAccountContext = (Get-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName | Where-Object{$_.StorageAccountName -eq $storageAccountName }).Context
 	
 	# create a storage container with permission as blob for public access of the files
 	New-AzureStorageContainer -Name $StorageContainerName -Context $storageAccountContext -Permission blob -ErrorAction SilentlyContinue *>&1
