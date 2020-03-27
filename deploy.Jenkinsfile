@@ -54,7 +54,7 @@ stage ('Checkout') {
  }
  
  String getZipFileName(){
-	return "demo-app-package.zip"
+	return "CICD\\demo-app-package.zip"
 }
 
 String getArtifactPath(){
