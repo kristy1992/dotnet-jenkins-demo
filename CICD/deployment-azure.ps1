@@ -3,6 +3,7 @@ Param(
     [string] [Parameter(Mandatory=$true)] $ResourceGroupName,
 	[string] [Parameter(Mandatory=$true)] $AzureUserName,
 	[string] [Parameter(Mandatory=$true)] $AzurePassword,
+	[bool] $isNew = $IsNew,
     [string] $StorageContainerName = $ResourceGroupName.ToLowerInvariant() + '-stageartifacts',
     [string] $TemplateFile = '..\Templates\resources.json',
 	[string] $skuName = "Standard_LRS",
@@ -11,7 +12,8 @@ Param(
 	)
 	
 $OptionalParameters = New-Object -TypeName Hashtable
-$OptionalParameters.Add($IsDeploy, $true)
+Set-Variable IsDeploy 'isDeploy' -Option ReadOnly -Force
+$OptionalParameters.Add($IsDeploy, !$isNew)
 
 # Convert relative paths to absolute paths if needed
 $TemplateFile = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine($PSScriptRoot, $TemplateFile))

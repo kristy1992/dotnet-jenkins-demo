@@ -28,7 +28,7 @@ stage ('Checkout') {
 				}
 				retry(2){
 					withCredentials([usernamePassword(credentialsId: credentialId, passwordVariable: 'AZURE_PASSWORD', usernameVariable: 'AZURE_USERNAME')]) {
-						bat "CALL powershell.exe  -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -Command \"CICD\\deployment-azure.ps1\" -ResourceGroupName $ResourceGroup -ResourceGroupLocation $ResourceGroupLocation -AzureUserName $AZURE_USERNAME -AzurePassword $AZURE_PASSWORD"
+						bat "CALL powershell.exe  -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -Command \"CICD\\deployment-azure.ps1\" -ResourceGroupName $ResourceGroup -ResourceGroupLocation $ResourceGroupLocation -AzureUserName $AZURE_USERNAME -AzurePassword $AZURE_PASSWORD -isNew \$false"
 					} 
 				}
 			}	
