@@ -53,9 +53,15 @@ steps {
 				
 				dir('src\\dotnet-jenkins-demo'){
 				script{
-				bat '"C:\\Program Files\\dotnet\\dotnet.exe" publish --configuration Release --output  \"${workspace}\\CICD\\Deployment\\Artifacts\"'
+				bat '"C:\\Program Files\\dotnet\\dotnet.exe" publish --configuration Release --output  \"bin\\Release\\dotnet.jenkins.demo\" --no-restore'
 				}
 				}
+				
+				zip([ 
+					dir: 'src\\dotnet-jenkins-demo\\bin\\Release\\dotnet.jenkins.demo', 
+					glob: '', 
+					zipFile: 'CICD\\Deployment\\Artifacts\\dotnet.jenkins.demo.zip'
+				])
 				echo "Artifact created"
 				
 				echo "Publishing Artifact"
@@ -66,6 +72,7 @@ steps {
 					glob: '', 
 					zipFile: zipFileName
 				])
+				
 				echo "Artifact published successfully"
    }   
    }
