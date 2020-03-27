@@ -18,13 +18,7 @@ stage ('Checkout') {
             checkout(scm)
             stash includes: '**', name: 'source', useDefaultExcludes: false
         }
-    }
-   
-		stage('Clean Work Space') {
-			steps {
-				cleanWs()
-			}
-		}		
+    }	
 		
 		//Download and unzip the Artifacts
 		stage('Prepare Artifacts'){
