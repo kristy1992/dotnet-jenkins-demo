@@ -42,6 +42,7 @@ stage('Build') {
       }
    }
 stage('Publish Artifacts') {
+steps {
             deleteDir()
             unstash 'source'
 			echo "Creating Artifact"
@@ -67,6 +68,7 @@ stage('Publish Artifacts') {
 				])
 				echo "Artifact published successfully"
    }   
+   }
  }
 }
 
