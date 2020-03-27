@@ -40,7 +40,41 @@ stage('Build') {
             }
 			echo "${workspace}"
       }
-   }				
+   }
+stage('Publish Artifacts') {
+            deleteDir()
+            unstash 'source'
+			echo "Creating Artifact"
+			script{
+					zipFileName =  getZipFileName()
+					workspace = getWorkspace(pwd())
+				}
+				
+				dir('src\\dotnet-jenkins-demo'){
+				script{
+				bat '"C:\\Program Files\\dotnet\\dotnet.exe" publish --configuration Release --output  \"${workspace}\\CICD\\Deployment\\Artifacts\"'
+				}
+				}
+				echo "Artifact created"
+				
+				echo "Publishing Artifact"
+				
+				zip([
+					archive: true, 
+					dir: 'CICD\\Deployment', 
+					glob: '', 
+					zipFile: zipFileName
+				])
+				echo "Artifact published successfully"
+   }   
  }
+}
+
+String getWorkspace(String workspace){
+	return workspace.replace("/","\\")
+}
+
+String getZipFileName(){
+	return "demo-app-package.zip"
 }
 
