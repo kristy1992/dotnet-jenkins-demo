@@ -23,7 +23,7 @@ stage ('Checkout') {
 		//Download and unzip the Artifacts
 		stage('Prepare Artifacts'){
 			steps{
-				copyArtifacts ([fingerprintArtifacts: true, projectName: 'jenkins-pipeline-session', selector: upstream(), target:'CICD'])
+				copyArtifacts ([fingerprintArtifacts: true, projectName: '../../jenkins-pipeline-session', selector: lastSuccessful, target:'CICD'])
 				unzip([
 					dir: 'CICD\\Deployment',
 					glob: '',
