@@ -6,7 +6,7 @@ Param(
 	[bool] $isNew = $IsNew,
     [string] $StorageContainerName = $ResourceGroupName.ToLowerInvariant() + '-stageartifacts',
     [string] $TemplateFile = '..\Templates\resources.json',
-	[string] $skuName = "Standard_LRS",
+	[string] $skuName = "Standard_GRS",
 	[string] $storageAccountName = "WebAPPArtifactsStorage",
 	[string] $ArtifactStagingDirectory = "..\Artifacts"
 	)
@@ -24,16 +24,23 @@ $password = ConvertTo-SecureString $AzurePassword -AsPlainText -Force
 $psCred = New-Object System.Management.Automation.PSCredential($AzureUserName, $password) -ErrorAction Stop
 Login-AzureRmAccount -Credential $psCred -ErrorAction Stop
 
+
+# Check whether resourceGroup exist and if not then create one
+$resourceGroup = Get-AzureRmResourceGroup -Name $ResourceGroupName -ErrorAction SilentlyContinue
+if(!$resourceGroup)
+{
+	New-AzureRmResourceGroup -Name $ResourceGroupName -Location $ResourceGroupLocation -Verbose -Force -ErrorAction Stop
+}
+
 if($OptionalParameters[$IsDeploy] -eq $true)
 {
 	# Check whether storage account exists or not
-	$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroup -Name $storageAccountName
-	
+	$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $storageAccountName
 	#If not exists, then create a new storage account with sku as LRS
 	if(!$storageAccount)
 	{
-	$storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
-												-Name $storageAccountName`
+	$storageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName `
+												-Name $storageAccountName `
 												-SkuName $skuName `
 												-Location $ResourceGroupLocation
 												}
@@ -41,7 +48,7 @@ if($OptionalParameters[$IsDeploy] -eq $true)
 	$storageAccountContext = $storageAccount.Context
 	
 	# create a storage container with permission as blob for public access of the files
-	New-AzStorageContainer -Name $StorageContainerName -Context $storageAccountContext -Permission blob -ErrorAction SilentlyContinue *>&1
+	New-AzureStorageContainer -Name $StorageContainerName -Context $storageAccountContext -Permission blob -ErrorAction SilentlyContinue *>&1
 	
 	# upload a file
 	$ArtifactFilePaths = Get-ChildItem $ArtifactStagingDirectory -Recurse -File | ForEach-Object -Process {$_.FullName}
@@ -51,12 +58,6 @@ if($OptionalParameters[$IsDeploy] -eq $true)
 	}
 }
 
-# Check whether resourceGroup exist and if not then create one
-$resourceGroup = Get-AzureRmResourceGroup -Name $ResourceGroupName -ErrorAction SilentlyContinue
-if(!$resourceGroup)
-{
-	New-AzureRmResourceGroup -Name $ResourceGroupName -Location $ResourceGroupLocation -Verbose -Force -ErrorAction Stop
-}
 
 New-AzureRmResourceGroupDeployment -Name ('Web-APP-Demo-' + ((Get-Date).ToUniversalTime()).ToString('MMdd-HHmm')) `
 									-ResourceGroupName $ResourceGroupName `
