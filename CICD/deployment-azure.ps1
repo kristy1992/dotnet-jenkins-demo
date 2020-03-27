@@ -5,9 +5,9 @@ Param(
 	[string] [Parameter(Mandatory=$true)] $AzurePassword,
 	[bool] $isNew = $IsNew,
     [string] $StorageContainerName = $ResourceGroupName.ToLowerInvariant() + '-stageartifacts',
-    [string] $TemplateFile = '..\Templates\resources.json',
+    [string] $TemplateFile = '..\CICD\Template\resources.json',
 	[string] $skuName = "Standard_GRS",
-	[string] $storageAccountName = "WebAPPArtifactsStorage",
+	[string] $storageAccountName = "webstorageaccount",
 	[string] $ArtifactStagingDirectory = "..\Artifacts"
 	)
 	
@@ -35,7 +35,7 @@ if(!$resourceGroup)
 if($OptionalParameters[$IsDeploy] -eq $true)
 {
 	# Check whether storage account exists or not
-	$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $storageAccountName
+	$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $storageAccountName -ErrorAction SilentlyContinue
 	#If not exists, then create a new storage account with sku as LRS
 	if(!$storageAccount)
 	{
