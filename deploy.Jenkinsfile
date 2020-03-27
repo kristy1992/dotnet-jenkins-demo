@@ -20,7 +20,24 @@ stage ('Checkout') {
         }
     }
    
-  	
+		stage('Clean Work Space') {
+			steps {
+				cleanWs()
+			}
+		}		
+		
+		//Download and unzip the Artifacts
+		stage('Prepare Artifacts'){
+			steps{
+				copyArtifacts ([fingerprintArtifacts: true, projectName: 'jenkins-pipeline-session', selector: upstream(), target:'CICD'])
+				unzip([
+					dir: 'CICD\\Deployment',
+					glob: '',
+					zipFile: getZipFileName()
+				])
+			}
+		}
+
 		stage('Provision Resources') {	
 			steps {
 				script{
@@ -32,7 +49,7 @@ stage ('Checkout') {
 					} 
 				}
 			}	
-		}				
+		}		
  }
  
 
@@ -41,4 +58,8 @@ stage ('Checkout') {
  String getCredentialId(){
  return 'myazure_credentials'
  }
+ 
+ String getZipFileName(){
+	return "demo-app-package.zip"
+}
 

@@ -6,6 +6,7 @@
 			"type": "bool",
 			"defaultValue": true
 		}
-	}
+	},
+	"resources": []
 	
 }
