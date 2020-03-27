@@ -23,7 +23,7 @@ stage ('Checkout') {
 		//Download and unzip the Artifacts
 		stage('Prepare Artifacts'){
 			steps{
-				copyArtifacts ([fingerprintArtifacts: true, projectName: getArtifactPath(), selector: lastSuccessful, target:'CICD'])
+				copyArtifacts ([fingerprintArtifacts: true, projectName: getArtifactPath(), target:'CICD'])
 				unzip([
 					dir: 'CICD\\Deployment',
 					glob: '',
@@ -58,6 +58,6 @@ stage ('Checkout') {
 }
 
 String getArtifactPath(){
-	return '.%2F..%2Fjenkins-pipeline-session'
+	return 'jenkins-pipeline-session'
 }
 
