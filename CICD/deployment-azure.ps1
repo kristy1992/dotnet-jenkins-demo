@@ -61,7 +61,6 @@ if(!$resourceGroup)
 New-AzureRmResourceGroupDeployment -Name ('Web-APP-Demo-' + ((Get-Date).ToUniversalTime()).ToString('MMdd-HHmm')) `
 									-ResourceGroupName $ResourceGroupName `
 									-TemplateFile $TemplateFile `
-									-TemplateParameterFile $TemplateParametersFile `
 									-Force -Verbose -ErrorAction Stop
 
 									
