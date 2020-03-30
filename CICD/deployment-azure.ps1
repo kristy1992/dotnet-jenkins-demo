@@ -8,7 +8,7 @@ Param(
     [string] $TemplateFile = '..\CICD\Template\resources.json',
 	[string] $skuName = "Standard_GRS",
 	[string] $storageAccountName = "demo27storageaccount",
-	[string] $ArtifactStagingDirectory = "..\CICD\Deployment\Artifacts",
+	[string] $ArtifactStagingDirectory = "..\CICD\Deployment\Artifacts"
 	)
 	
 $OptionalParameters = New-Object -TypeName Hashtable
