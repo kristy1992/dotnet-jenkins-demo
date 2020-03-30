@@ -24,6 +24,12 @@ $password = ConvertTo-SecureString $AzurePassword -AsPlainText -Force
 $psCred = New-Object System.Management.Automation.PSCredential($AzureUserName, $password) -ErrorAction Stop
 Login-AzureRmAccount -Credential $psCred -ErrorAction Stop
 
+if ($ResourceGroupLocation -eq $null) {
+	$ResourceGroupLocation = 'westus'
+}
+if ($ResourceGroupName -eq $null) {
+	$ResourceGroupName = 'RG-QED-Dev'
+}
 
 # Check whether resourceGroup exist and if not then create one
 $resourceGroup = Get-AzureRmResourceGroup -Name $ResourceGroupName -ErrorAction SilentlyContinue
@@ -62,6 +68,7 @@ if($OptionalParameters[$IsDeploy] -eq $true)
 New-AzureRmResourceGroupDeployment -Name ('Web-APP-Demo-' + ((Get-Date).ToUniversalTime()).ToString('MMdd-HHmm')) `
 									-ResourceGroupName $ResourceGroupName `
 									-TemplateFile $TemplateFile `
+									@OptionalParameters `
 									-Force -Verbose -ErrorAction Stop
 
 									
