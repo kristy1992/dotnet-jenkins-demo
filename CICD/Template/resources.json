@@ -72,7 +72,6 @@
 			}
 	},
 	"resources": [{
-			"condition": "[parameters('isNew')]",
 			"apiVersion": "2015-04-08",
 			"kind": "GlobalDocumentDB",
 			"type": "Microsoft.DocumentDb/databaseAccounts",
@@ -103,7 +102,6 @@
 			}
 		},
 		{
-			"condition": "[parameters('isNew')]",
 			"apiVersion": "2016-09-01",
 			"name": "[parameters('hostingPlanName')]",
 			"type": "Microsoft.Web/serverfarms",
@@ -114,7 +112,6 @@
 			}
 		},
 		{
-			"condition": "[parameters('isNew')]",
 			"apiVersion": "2018-02-01",
 			"name": "[parameters(websiteName')]",
 			"type": "Microsoft.Web/sites",
