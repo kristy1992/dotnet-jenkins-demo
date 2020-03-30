@@ -2,6 +2,9 @@
 	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
 	"contentVersion": "1.0.0.0",
 	"parameters": {
+		"websiteName":{
+			"value": "aaz-qed-dev-webapp"
+		},
 		"hostingPlanName": {
             "value": "asp-qed-dev-app"
         },
@@ -61,11 +64,11 @@
 		},
 		"isNew": {
 			"type": "bool",
-			"defaultValue": false
+			"defaultValue": true
 		},
 		"isDeploy": {
 			"type": "bool",
-			"defaultValue": true
+			"defaultValue": false
 			}
 	},
 	"resources": [{
@@ -113,7 +116,7 @@
 		{
 			"condition": "[parameters('isNew')]",
 			"apiVersion": "2018-02-01",
-			"name": "[parameters('questWebsiteName')]",
+			"name": "[parameters(websiteName')]",
 			"type": "Microsoft.Web/sites",
 			"location": "[resourceGroup().location]",
 			"dependsOn": [
