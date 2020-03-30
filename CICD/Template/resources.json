@@ -45,13 +45,13 @@
 			"value": "Standard"
 		},
 		"locationName": {
-			"value": "East Us"
-		},
-		"pairedLocationName": {
 			"value": "West Us"
 		},
+		"pairedLocationName": {
+			"value": "East Us"
+		},
 		"pairedLocation": {
-			"value": "westus"
+			"value": "eastus"
 		},
 		"sourceSlot": {
 			"value": "deployment"

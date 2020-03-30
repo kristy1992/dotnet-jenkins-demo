@@ -20,17 +20,6 @@ stage ('Checkout') {
         }
     }	
 		
-		//Download and unzip the Artifacts
-		stage('Prepare Artifacts'){
-			steps{
-				copyArtifacts ([fingerprintArtifacts: true, projectName: getArtifactPath(), target:'CICD'])
-				unzip([
-					dir: 'CICD\\Deployment',
-					glob: '',
-					zipFile: getZipFileName()
-				])
-			}
-		}
 
 		stage('Provision Resources') {	
 			steps {
