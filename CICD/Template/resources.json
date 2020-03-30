@@ -2,11 +2,127 @@
 	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
 	"contentVersion": "1.0.0.0",
 	"parameters": {
-	"isDeploy": {
+		"hostingPlanName": {
+            "value": "asp-qed-dev-app"
+        },
+        "sku": {
+            "value": "Free"
+        },
+        "skuCode": {
+            "value": "F1"
+        },
+        "workerSize": {
+            "value": "1"
+        },
+        "workerSizeId": {
+            "value": "1"
+        },
+        "numberOfWorkers": {
+            "value": "1"
+        },
+		"hostingEnvironment": {
+            "value": ""
+        },
+		"cosmosDbName": {
+            "value": "nsazdbqeddev"
+        },
+        "defaultExperience": {
+            "value": "Core (SQL)"
+        },
+		"redisCacheName": {
+            "value": "qed-qdp-dev-cache"
+		},
+		"redis_skuName": {
+            "value": "Standard"
+		},
+		"redis_skuFamily": {
+            "value": "C"
+		},
+		"redis_skuCapacity": {
+            "value": 1
+		},
+		"cosmos_offerType": {
+			"value": "Standard"
+		},
+		"locationName": {
+			"value": "East Us"
+		},
+		"pairedLocationName": {
+			"value": "West Us"
+		},
+		"pairedLocation": {
+			"value": "westus"
+		},
+		"sourceSlot": {
+			"value": "deployment"
+		},
+		"destinationSlot": {
+			"value": "production"
+		},
+		"isNew": {
+			"type": "bool",
+			"defaultValue": false
+		},
+		"isDeploy": {
 			"type": "bool",
 			"defaultValue": true
-		}
+			}
 	},
-	"resources": []
+	"resources": [{
+			"condition": "[parameters('isNew')]",
+			"apiVersion": "2015-04-08",
+			"kind": "GlobalDocumentDB",
+			"type": "Microsoft.DocumentDb/databaseAccounts",
+			"name": "[parameters('cosmosDbName')]",
+			"location": "[resourceGroup().location]",
+			"properties": {
+				"databaseAccountOfferType": "[parameters('cosmos_offerType')]",
+				"enableMultipleWriteLocations": true,
+				"isVirtualNetworkFilterEnabled": false,
+				"enableAutomaticFailover": true,
+				"virtualNetworkRules": [],
+				"ipRangeFilter": "",
+				"locations": [{
+						"id": "[concat(parameters('cosmosDbName'), '-', resourceGroup().location)]",
+						"failoverPriority": 0,
+						"locationName": "[parameters('locationName')]"
+					},
+					{
+						"id": "[concat(parameters('cosmosDbName'), '-', parameters('pairedLocation'))]",
+						"failoverPriority": 1,
+						"locationName": "[parameters('pairedLocationName')]"
+					}
+				],
+				"dependsOn": []
+			},
+			"tags": {
+				"defaultExperience": "[parameters('defaultExperience')]"
+			}
+		},
+		{
+			"condition": "[parameters('isNew')]",
+			"apiVersion": "2016-09-01",
+			"name": "[parameters('hostingPlanName')]",
+			"type": "Microsoft.Web/serverfarms",
+			"location": "[resourceGroup().location]",
+			"sku": {
+				"Tier": "[parameters('sku')]",
+				"Name": "[parameters('skuCode')]"
+			}
+		},
+		{
+			"condition": "[parameters('isNew')]",
+			"apiVersion": "2018-02-01",
+			"name": "[parameters('questWebsiteName')]",
+			"type": "Microsoft.Web/sites",
+			"location": "[resourceGroup().location]",
+			"dependsOn": [
+				"[concat('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]"
+			],
+			"properties": {
+				"serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
+			}
+		}
+	]
 	
 }
