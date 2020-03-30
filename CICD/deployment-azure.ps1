@@ -8,7 +8,7 @@ Param(
     [string] $TemplateFile = '..\CICD\Template\resources.json',
 	[string] $skuName = "Standard_GRS",
 	[string] $storageAccountName = "demo27storageaccount",
-	[string] $ArtifactStagingDirectory = "..\CICD\Deployment\Artifacts"
+	[string] $ArtifactStagingDirectory = "..\CICD\Deployment\Artifacts",
 	)
 	
 $OptionalParameters = New-Object -TypeName Hashtable
@@ -24,6 +24,7 @@ $password = ConvertTo-SecureString $AzurePassword -AsPlainText -Force
 $psCred = New-Object System.Management.Automation.PSCredential($AzureUserName, $password) -ErrorAction Stop
 Login-AzureRmAccount -Credential $psCred -ErrorAction Stop
 
+
 if ($ResourceGroupLocation -eq $null) {
 	$ResourceGroupLocation = 'westus'
 }
@@ -32,7 +33,7 @@ if ($ResourceGroupName -eq $null) {
 }
 
 # Check whether resourceGroup exist and if not then create one
-$resourceGroup = Get-AzureRmResourceGroup -Name $ResourceGroupName -ErrorAction SilentlyContinue
+$resourceGroup = Get-AzureRmResourceGroup -Name $ResourceGroupName
 if(!$resourceGroup)
 {
 	New-AzureRmResourceGroup -Name $ResourceGroupName -Location $ResourceGroupLocation -Verbose -Force -ErrorAction Stop
