@@ -3,7 +3,7 @@ Param(
     [string] [Parameter(Mandatory=$true)] $ResourceGroupName,
 	[string] [Parameter(Mandatory=$true)] $AzureUserName,
 	[string] [Parameter(Mandatory=$true)] $AzurePassword,
-	[bool] $isNew = $IsNew,
+	[bool] $isNew = $isNew,
     [string] $StorageContainerName = $ResourceGroupName.ToLowerInvariant() + '-stageartifacts',
     [string] $TemplateFile = '..\CICD\Template\resources.json',
 	[string] $skuName = "Standard_GRS",
