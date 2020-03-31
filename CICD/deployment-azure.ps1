@@ -6,6 +6,7 @@ Param(
 	[bool] $isNew = $IsNew,
     [string] $StorageContainerName = $ResourceGroupName.ToLowerInvariant() + '-stageartifacts',
     [string] $TemplateFile = '..\CICD\Template\resources.json',
+	[string] $TemplateParametersFile = '..\CICD\Template\resources.parameters.json',
 	[string] $skuName = "Standard_GRS",
 	[string] $storageAccountName = "demo27storageaccount",
 	[string] $ArtifactStagingDirectory = "..\CICD\Deployment\Artifacts"
@@ -17,6 +18,7 @@ $OptionalParameters.Add($IsDeploy, !$isNew)
 
 # Convert relative paths to absolute paths if needed
 $TemplateFile = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine($PSScriptRoot, $TemplateFile))
+$TemplateParametersFile = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine($PSScriptRoot, $TemplateParametersFile))
 $ArtifactStagingDirectory = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine($PSScriptRoot, $ArtifactStagingDirectory))
 
 # Login with provided credentials
@@ -65,10 +67,12 @@ if($OptionalParameters[$IsDeploy] -eq $true)
 	}
 }
 echo "$TemplateFile"
+echo "$ResourceGroupName"
 
 New-AzureRmResourceGroupDeployment -Name ('Web-APP-Demo-' + ((Get-Date).ToUniversalTime()).ToString('MMdd-HHmm')) `
 									-ResourceGroupName $ResourceGroupName `
 									-TemplateFile $TemplateFile `
+									-TemplateParameterFile $TemplateParametersFile `
 									@OptionalParameters `
 									-Force -Verbose -ErrorAction Stop
 

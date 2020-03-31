@@ -1,75 +1,106 @@
 {
 	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
 	"contentVersion": "1.0.0.0",
-	"parameters": {
-		"websiteName":{
-			"value": "aaz-qed-dev-webapp"
+	"parameters":{
+		"subscription": {
+			"type": "string"
 		},
 		"hostingPlanName": {
-            "value": "asp-qed-dev-app"
-        },
-        "sku": {
-            "value": "Free"
-        },
-        "skuCode": {
-            "value": "F1"
-        },
-        "workerSize": {
-            "value": "1"
-        },
-        "workerSizeId": {
-            "value": "1"
-        },
-        "numberOfWorkers": {
-            "value": "1"
-        },
+			"type": "string"
+		},
+		"sku": {
+			"type": "string"
+		},
+		"skucode": {
+			"type": "string"
+		},
+		"workerSize": {
+			"type": "string"
+		},
+		"workerSizeId": {
+			"type": "string"
+		},
+		"numberOfWorkers": {
+			"type": "string"
+		},
 		"hostingEnvironment": {
-            "value": ""
-        },
+			"type": "string"
+		},
 		"cosmosDbName": {
-            "value": "nsazdbqeddev"
-        },
-        "defaultExperience": {
-            "value": "Core (SQL)"
-        },
-		"redisCacheName": {
-            "value": "qed-qdp-dev-cache"
+			"type": "string"
 		},
-		"redis_skuName": {
-            "value": "Standard"
-		},
-		"redis_skuFamily": {
-            "value": "C"
-		},
-		"redis_skuCapacity": {
-            "value": 1
+		"defaultExperience": {
+			"type": "string"
 		},
 		"cosmos_offerType": {
-			"value": "Standard"
+			"type": "string"
 		},
 		"locationName": {
-			"value": "West Us"
+			"type": "string"
 		},
 		"pairedLocationName": {
-			"value": "East Us"
+			"type": "string"
 		},
 		"pairedLocation": {
-			"value": "eastus"
+			"type": "string"
+		},
+		"_artifactsLocation": {
+			"type": "string",
+			"defaultValue": "empty"
+		},
+		"_artifactsLocationSasToken": {
+			"type": "securestring",
+			"defaultValue": "empty"
+		},
+		"storageAccountName": {
+			"type": "string"
+		},
+		"storageAccountResourceGroup": {
+			"type": "string"
+		},
+		"questDeployPackageFileName": {
+			"type": "string",
+			"minLength": 1
+		},
+		"questWebsiteName": {
+			"type": "string"
 		},
 		"sourceSlot": {
-			"value": "deployment"
+			"type": "string"
 		},
 		"destinationSlot": {
-			"value": "production"
+			"type": "string"
 		},
 		"isNew": {
 			"type": "bool",
-			"defaultValue": true
+			"defaultValue": false
 		},
 		"isDeploy": {
 			"type": "bool",
-			"defaultValue": false
-			}
+			"defaultValue": true
+			},
+		"cloudServiceName": {
+		  "type": "string"
+		},
+		"cloudServiceSlotName": {
+		  "type": "string"
+		},
+		"cloudServiceDeploymentLabel": {
+		  "type": "string"
+		},
+		"cloudServicePackageFileName": {
+		  "type": "string"
+		},
+		"cloudServiceConfigurationFileName": {
+		  "type": "string"
+		},
+		"cloudServiceDeploymentOptions": {
+		  "type": "string"
+		},
+		"deployCloudService": {
+		  "type": "bool",
+		  "defaultValue": false
+		}
 	},
 	"resources": [{
 			"apiVersion": "2015-04-08",

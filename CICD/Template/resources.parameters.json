@@ -4,6 +4,62 @@
 	"parameters": {
 		"subscription": {
 			"value": "Visual Studio Professional Subscription"
-		}
+		},
+		"websiteName":{
+			"value": "aaz-qed-dev-webapp"
+		},
+		"hostingPlanName": {
+            "value": "asp-qed-dev-app"
+        },
+        "sku": {
+            "value": "Free"
+        },
+        "skuCode": {
+            "value": "F1"
+        },
+        "workerSize": {
+            "value": "1"
+        },
+        "workerSizeId": {
+            "value": "1"
+        },
+        "numberOfWorkers": {
+            "value": "1"
+        },
+		"hostingEnvironment": {
+            "value": ""
+        },
+		"cosmosDbName": {
+            "value": "nsazdbqeddev"
+        },
+        "defaultExperience": {
+            "value": "Core (SQL)"
+        },
+		"cosmos_offerType": {
+			"value": "Standard"
+		},
+		"locationName": {
+			"value": "West Us"
+		},
+		"pairedLocationName": {
+			"value": "East Us"
+		},
+		"pairedLocation": {
+			"value": "eastus"
+		},
+		"sourceSlot": {
+			"value": "deployment"
+		},
+		"destinationSlot": {
+			"value": "production"
+		},
+		"isNew": {
+			"type": "bool",
+			"defaultValue": true
+		},
+		"isDeploy": {
+			"type": "bool",
+			"defaultValue": false
+			}
 	}
 }
