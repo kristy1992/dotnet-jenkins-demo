@@ -3,7 +3,7 @@ Param(
     [string] [Parameter(Mandatory=$true)] $ResourceGroupName,
 	[string] [Parameter(Mandatory=$true)] $AzureUserName,
 	[string] [Parameter(Mandatory=$true)] $AzurePassword,
-	[bool] $isNew = $isNew,
+	[bool] $isNew = $IsNew,
     [string] $StorageContainerName = $ResourceGroupName.ToLowerInvariant() + '-stageartifacts',
     [string] $TemplateFile = '..\CICD\Template\resources.json',
 	[string] $skuName = "Standard_GRS",
@@ -64,7 +64,7 @@ if($OptionalParameters[$IsDeploy] -eq $true)
 		Set-AzureStorageBlobContent -File $SourcePath -Blob $BlobName -Container $StorageContainerName -Context $storageAccountContext -Force
 	}
 }
-
+echo "$TemplateFile"
 
 New-AzureRmResourceGroupDeployment -Name ('Web-APP-Demo-' + ((Get-Date).ToUniversalTime()).ToString('MMdd-HHmm')) `
 									-ResourceGroupName $ResourceGroupName `
