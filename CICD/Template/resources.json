@@ -52,17 +52,7 @@
 			"type": "securestring",
 			"defaultValue": "empty"
 		},
-		"storageAccountName": {
-			"type": "string"
-		},
-		"storageAccountResourceGroup": {
-			"type": "string"
-		},
-		"questDeployPackageFileName": {
-			"type": "string",
-			"minLength": 1
-		},
-		"questWebsiteName": {
+		"websiteName": {
 			"type": "string"
 		},
 		"sourceSlot": {
@@ -78,29 +68,7 @@
 		"isDeploy": {
 			"type": "bool",
 			"defaultValue": true
-			},
-		"cloudServiceName": {
-		  "type": "string"
-		},
-		"cloudServiceSlotName": {
-		  "type": "string"
-		},
-		"cloudServiceDeploymentLabel": {
-		  "type": "string"
-		},
-		"cloudServicePackageFileName": {
-		  "type": "string"
-		},
-		"cloudServiceConfigurationFileName": {
-		  "type": "string"
-		},
-		"cloudServiceDeploymentOptions": {
-		  "type": "string"
-		},
-		"deployCloudService": {
-		  "type": "bool",
-		  "defaultValue": false
-		}
+			}
 	},
 	"resources": [{
 			"apiVersion": "2015-04-08",
