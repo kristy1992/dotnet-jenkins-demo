@@ -157,7 +157,7 @@
 				"[concat('Microsoft.Web/sites/', parameters('websiteName'), '/slots/', parameters('sourceSlot'))]"
 			],
 			"properties": {
-				"packageUri": "[concat(parameters('_artifactsLocation'), '/', parameters('questDeployPackageFileName'), parameters('_artifactsLocationSasToken'))]"
+				"packageUri": "[concat(parameters('_artifactsLocation'), '/', parameters('questDeployPackageFileName'))]"
 			}
 		},
 	]

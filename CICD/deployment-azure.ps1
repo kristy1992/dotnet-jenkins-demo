@@ -28,6 +28,25 @@ $password = ConvertTo-SecureString $AzurePassword -AsPlainText -Force
 $psCred = New-Object System.Management.Automation.PSCredential($AzureUserName, $password) -ErrorAction Stop
 Login-AzureRmAccount -Credential $psCred -ErrorAction Stop
 
+# Parse the parameter file and update the values of artifacts location and artifacts location SAS token if they are present
+$JsonContent = Get-Content $TemplateParametersFile -Raw | ConvertFrom-Json
+$JsonParameters = $JsonContent | Get-Member -Type NoteProperty | Where-Object {$_.Name -eq "parameters"}
+
+if ($JsonParameters -eq $null) {
+	$JsonParameters = $JsonContent
+}
+else {
+	$JsonParameters = $JsonContent.parameters
+}
+
+$JsonParameters | Get-Member -Type NoteProperty | ForEach-Object {
+	$ParameterValue = $JsonParameters | Select-Object -ExpandProperty $_.Name
+
+	if ($_.Name -eq $ArtifactsLocationName -or $_.Name -eq $ArtifactsLocationSasTokenName -or $_.Name -eq $websiteName `
+	-or $_.Name -eq $SourceSlotName -or $_.Name -eq $DestinationSlotName) {
+		$OptionalParameters[$_.Name] = $ParameterValue.value
+	}
+}
 
 if ($ResourceGroupLocation -eq $null) {
 	$ResourceGroupLocation = 'westus'
@@ -58,6 +77,9 @@ if($OptionalParameters[$IsDeploy] -eq $true)
 	#retrieve the context of the storage account created or existed one
 	$storageAccountContext = (Get-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName | Where-Object{$_.StorageAccountName -eq $storageAccountName }).Context
 	
+	# Generate the value for artifacts location
+	$OptionalParameters[$ArtifactsLocationName] = $storageAccountContext.BlobEndPoint + $StorageContainerName
+	
 	# create a storage container with permission as blob for public access of the files
 	New-AzureStorageContainer -Name $StorageContainerName -Context $storageAccountContext -Permission blob -ErrorAction SilentlyContinue *>&1
 	
@@ -78,6 +100,14 @@ New-AzureRmResourceGroupDeployment -Name ('Web-APP-Demo-' + ((Get-Date).ToUniver
 									@OptionalParameters `
 									-Force -Verbose -ErrorAction Stop
 
+if($OptionalParameters[$IsDeploy] -eq $true)
+{
+	# Wait for 10s and allow slot to warm up and then swap slot
+	Start-Sleep -s 10
+	Switch-AzureRmWebAppSlot -ResourceGroupName $ResourceGroupName -Name $OptionalParameters[$websiteName] -SourceSlotName $OptionalParameters[$SourceSlotName] `
+							 -DestinationSlotName $OptionalParameters[$DestinationSlotName] -Verbose -ErrorAction Stop
+							 
+}
 									
 									
 									

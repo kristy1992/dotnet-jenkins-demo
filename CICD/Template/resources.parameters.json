@@ -54,7 +54,7 @@
 			"value": "production"
 		},
 		"questDeployPackageFileName": {
-			"value": "Lutron.QuickDesignPlatform.WebApi.zip"
+			"value": "dotnet.jenkins.demo.zip"
 		},
 	}
 }
