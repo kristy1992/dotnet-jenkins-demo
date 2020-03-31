@@ -29,7 +29,7 @@ $psCred = New-Object System.Management.Automation.PSCredential($AzureUserName, $
 Login-AzureRmAccount -Credential $psCred -ErrorAction Stop
 
 # Parse the parameter file and update the values of artifacts location and artifacts location SAS token if they are present
-$JsonContent = Get-Content $TemplateParametersFile -Raw | ConvertFrom-Json
+$JsonContent = Get-Content $TemplateParametersFile | Out-String
 $JsonParameters = $JsonContent | Get-Member -Type NoteProperty | Where-Object {$_.Name -eq "parameters"}
 
 if ($JsonParameters -eq $null) {
