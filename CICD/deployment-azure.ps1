@@ -8,7 +8,7 @@ Param(
     [string] $TemplateFile = '..\CICD\Template\resources.json',
 	[string] $TemplateParametersFile = '..\CICD\Template\resources.parameters.json',
 	[string] $skuName = "Standard_GRS",
-	[string] $storageAccountName = "demo27storageaccount",
+	[string] $storageAccountName = "demo312020storageaccount",
 	[string] $ArtifactStagingDirectory = "..\CICD\Deployment\Artifacts"
 	)
 	
@@ -52,7 +52,7 @@ if ($ResourceGroupLocation -eq $null) {
 	$ResourceGroupLocation = 'westus'
 }
 if ($ResourceGroupName -eq $null) {
-	$ResourceGroupName = 'RG-QED-Dev'
+	$ResourceGroupName = 'RG-QED-Demo'
 }
 
 # Check whether resourceGroup exist and if not then create one
@@ -104,6 +104,7 @@ if($OptionalParameters[$IsDeploy] -eq $true)
 {
 	# Wait for 10s and allow slot to warm up and then swap slot
 	Start-Sleep -s 10
+	write-host "website name: "$OptionalParameters[$websiteName]
 	Switch-AzureRmWebAppSlot -ResourceGroupName $ResourceGroupName -Name $OptionalParameters[$websiteName] -SourceSlotName $OptionalParameters[$SourceSlotName] `
 							 -DestinationSlotName $OptionalParameters[$DestinationSlotName] -Verbose -ErrorAction Stop
 							 
