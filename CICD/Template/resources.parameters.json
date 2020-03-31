@@ -6,10 +6,10 @@
 			"value": "Visual Studio Professional Subscription"
 		},
 		"websiteName":{
-			"value": "aaz-qed-dev-webapp"
+			"value": "aaz-qed-demo-test-webapp"
 		},
 		"hostingPlanName": {
-            "value": "asp-qed-dev-app"
+            "value": "asp-qed-demo-app"
         },
         "sku": {
             "value": "Free"
@@ -30,7 +30,7 @@
             "value": ""
         },
 		"cosmosDbName": {
-            "value": "nsazdbqeddev"
+            "value": "nsazdbqeddemo"
         },
         "defaultExperience": {
             "value": "Core (SQL)"
@@ -52,14 +52,6 @@
 		},
 		"destinationSlot": {
 			"value": "production"
-		},
-		"isNew": {
-			"type": "bool",
-			"defaultValue": true
-		},
-		"isDeploy": {
-			"type": "bool",
-			"defaultValue": false
-			}
+		}
 	}
 }

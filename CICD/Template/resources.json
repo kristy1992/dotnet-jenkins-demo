@@ -71,6 +71,7 @@
 			}
 	},
 	"resources": [{
+			"condition": "[parameters('isNew')]",
 			"apiVersion": "2015-04-08",
 			"kind": "GlobalDocumentDB",
 			"type": "Microsoft.DocumentDb/databaseAccounts",
@@ -101,6 +102,7 @@
 			}
 		},
 		{
+			"condition": "[parameters('isNew')]",
 			"apiVersion": "2016-09-01",
 			"name": "[parameters('hostingPlanName')]",
 			"type": "Microsoft.Web/serverfarms",
@@ -111,6 +113,7 @@
 			}
 		},
 		{
+			"condition": "[parameters('isNew')]",
 			"apiVersion": "2018-02-01",
 			"name": "[parameters('websiteName')]",
 			"type": "Microsoft.Web/sites",
@@ -121,7 +124,34 @@
 			"properties": {
 				"serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
 			}
-		}
+		},
+		{
+			"condition": "[parameters('isNew')]",
+			"apiVersion": "2018-02-01",
+			"name": "[concat(parameters('questWebsiteName'), '/', parameters('sourceSlot'))]",
+			"type": "Microsoft.Web/sites/slots",
+			"location": "[resourceGroup().location]",
+			"dependsOn": [
+				"[concat('Microsoft.Web/sites/', parameters('questWebsiteName'))]",
+				"[concat('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]"
+			],
+			"properties": {
+				"serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
+			}
+		},
+		{
+			"condition": "[parameters('isDeploy')]",
+			"name": "[concat(parameters('questWebsiteName'), '/', parameters('sourceSlot'), '/MSDeploy')]",
+			"type": "Microsoft.Web/sites/slots/extensions",
+			"location": "[resourceGroup().location]",
+			"apiVersion": "2018-02-01",
+			"dependsOn": [
+				"[concat('Microsoft.Web/sites/', parameters('questWebsiteName'), '/slots/', parameters('sourceSlot'))]"
+			],
+			"properties": {
+				"packageUri": "[concat(parameters('_artifactsLocation'), '/', parameters('questDeployPackageFileName'), parameters('_artifactsLocationSasToken'))]"
+			}
+		},
 	]
 	
 }

@@ -6,7 +6,7 @@ options {
 }
 parameters{
 		choice(name:'ResourceGroup',
-			  choices:['RG-QED-Dev'],
+			  choices:['RG-QED-Dev', 'RG-QED-Demo'],
 			  description:'ResourceGroup Name')
 		string(name: 'ResourceGroupLocation', defaultValue: 'westus', description:'ResourceGroup Location')  
 	}
