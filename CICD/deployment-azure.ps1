@@ -9,7 +9,10 @@ Param(
 	[string] $TemplateParametersFile = '..\CICD\Template\resources.parameters.json',
 	[string] $skuName = "Standard_GRS",
 	[string] $storageAccountName = "demo312020storageaccount",
-	[string] $ArtifactStagingDirectory = "..\CICD\Deployment\Artifacts"
+	[string] $ArtifactStagingDirectory = "..\CICD\Deployment\Artifacts",
+	[string] $deployWebSiteName = "aaz-qed-demo-test-webapp",
+	[string] $deploySourceSlot="deployment",
+	[string] $deployDestinationSlot="production"
 	)
 	
 $OptionalParameters = New-Object -TypeName Hashtable
@@ -112,8 +115,8 @@ if($OptionalParameters[$IsDeploy] -eq $true)
 	# Wait for 10s and allow slot to warm up and then swap slot
 	Start-Sleep -s 10
 	
-	Switch-AzureRmWebAppSlot -ResourceGroupName $ResourceGroupName -Name $OptionalParameters[$websiteName] -SourceSlotName $OptionalParameters[$SourceSlotName] `
-							 -DestinationSlotName $OptionalParameters[$DestinationSlotName] -Verbose -ErrorAction Stop
+	Switch-AzureRmWebAppSlot -ResourceGroupName $ResourceGroupName -Name $deployDestinationSlot -SourceSlotName $deploySourceSlot `
+							 -DestinationSlotName $deployDestinationSlot -Verbose -ErrorAction Stop
 							 
 }
 									
