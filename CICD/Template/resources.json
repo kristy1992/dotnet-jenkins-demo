@@ -128,30 +128,17 @@
 		{
 			"condition": "[parameters('isNew')]",
 			"apiVersion": "2018-02-01",
-			"name": "[concat(parameters('questWebsiteName'), '/', parameters('sourceSlot'))]",
+			"name": "[concat(parameters('websiteName'), '/', parameters('sourceSlot'))]",
 			"type": "Microsoft.Web/sites/slots",
 			"location": "[resourceGroup().location]",
 			"dependsOn": [
-				"[concat('Microsoft.Web/sites/', parameters('questWebsiteName'))]",
+				"[concat('Microsoft.Web/sites/', parameters('websiteName'))]",
 				"[concat('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]"
 			],
 			"properties": {
 				"serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
 			}
-		},
-		{
-			"condition": "[parameters('isDeploy')]",
-			"name": "[concat(parameters('questWebsiteName'), '/', parameters('sourceSlot'), '/MSDeploy')]",
-			"type": "Microsoft.Web/sites/slots/extensions",
-			"location": "[resourceGroup().location]",
-			"apiVersion": "2018-02-01",
-			"dependsOn": [
-				"[concat('Microsoft.Web/sites/', parameters('questWebsiteName'), '/slots/', parameters('sourceSlot'))]"
-			],
-			"properties": {
-				"packageUri": "[concat(parameters('_artifactsLocation'), '/', parameters('questDeployPackageFileName'), parameters('_artifactsLocationSasToken'))]"
-			}
-		},
+		}
 	]
 	
 }
