@@ -115,7 +115,7 @@ if($OptionalParameters[$IsDeploy] -eq $true)
 	# Wait for 10s and allow slot to warm up and then swap slot
 	Start-Sleep -s 10
 	
-	Switch-AzureRmWebAppSlot -ResourceGroupName $ResourceGroupName -Name $deployDestinationSlot -SourceSlotName $deploySourceSlot `
+	Switch-AzureRmWebAppSlot -ResourceGroupName $ResourceGroupName -Name $deployWebSiteName -SourceSlotName $deploySourceSlot `
 							 -DestinationSlotName $deployDestinationSlot -Verbose -ErrorAction Stop
 							 
 }
