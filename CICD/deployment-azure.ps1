@@ -15,6 +15,12 @@ Param(
 $OptionalParameters = New-Object -TypeName Hashtable
 Set-Variable IsDeploy 'isDeploy' -Option ReadOnly -Force
 Set-Variable isNewVariable 'isNew' -Option ReadOnly -Force
+
+Set-Variable ArtifactsLocationName '_artifactsLocation' -Option ReadOnly -Force
+Set-Variable websiteName 'websiteName' -Option ReadOnly -Force
+Set-Variable SourceSlotName 'sourceSlot' -Option ReadOnly -Force
+Set-Variable DestinationSlotName 'destinationSlot' -Option ReadOnly -Force
+
 $OptionalParameters.Add($isNewVariable, $isNew)
 $OptionalParameters.Add($IsDeploy, !$isNew)
 
@@ -42,7 +48,7 @@ else {
 $JsonParameters | Get-Member -Type NoteProperty | ForEach-Object {
 	$ParameterValue = $JsonParameters | Select-Object -ExpandProperty $_.Name
 
-	if ($_.Name -eq $ArtifactsLocationName -or $_.Name -eq $ArtifactsLocationSasTokenName -or $_.Name -eq $websiteName `
+	if ($_.Name -eq $ArtifactsLocationName -or $_.Name -eq $websiteName `
 	-or $_.Name -eq $SourceSlotName -or $_.Name -eq $DestinationSlotName) {
 		$OptionalParameters[$_.Name] = $ParameterValue.value
 	}
@@ -92,6 +98,7 @@ if($OptionalParameters[$IsDeploy] -eq $true)
 }
 echo "$TemplateFile"
 echo "$ResourceGroupName"
+write-host "website name: "$OptionalParameters[$websiteName]
 
 New-AzureRmResourceGroupDeployment -Name ('Web-APP-Demo-' + ((Get-Date).ToUniversalTime()).ToString('MMdd-HHmm')) `
 									-ResourceGroupName $ResourceGroupName `
@@ -104,7 +111,7 @@ if($OptionalParameters[$IsDeploy] -eq $true)
 {
 	# Wait for 10s and allow slot to warm up and then swap slot
 	Start-Sleep -s 10
-	write-host "website name: "$OptionalParameters[$websiteName]
+	
 	Switch-AzureRmWebAppSlot -ResourceGroupName $ResourceGroupName -Name $OptionalParameters[$websiteName] -SourceSlotName $OptionalParameters[$SourceSlotName] `
 							 -DestinationSlotName $OptionalParameters[$DestinationSlotName] -Verbose -ErrorAction Stop
 							 
