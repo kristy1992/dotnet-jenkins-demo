@@ -14,6 +14,8 @@ Param(
 	
 $OptionalParameters = New-Object -TypeName Hashtable
 Set-Variable IsDeploy 'isDeploy' -Option ReadOnly -Force
+Set-Variable isNewVariable 'isNew' -Option ReadOnly -Force
+$OptionalParameters.Add($isNewVariable, $isNew)
 $OptionalParameters.Add($IsDeploy, !$isNew)
 
 # Convert relative paths to absolute paths if needed
