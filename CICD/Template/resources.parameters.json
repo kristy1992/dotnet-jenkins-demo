@@ -30,7 +30,7 @@
             "value": ""
         },
 		"cosmosDbName": {
-            "value": "nsazdbqeddemo"
+            "value": "nsazdbqed"
         },
         "defaultExperience": {
             "value": "Core (SQL)"

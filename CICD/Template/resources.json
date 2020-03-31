@@ -70,21 +70,17 @@
 			"defaultValue": true
 			}
 	},
-	"resources": [{
+	"resources": [
+	{
 			"condition": "[parameters('isNew')]",
-			"apiVersion": "2015-04-08",
-			"kind": "GlobalDocumentDB",
-			"type": "Microsoft.DocumentDb/databaseAccounts",
-			"name": "[parameters('cosmosDbName')]",
-			"location": "[resourceGroup().location]",
-			"properties": {
-				"databaseAccountOfferType": "[parameters('cosmos_offerType')]",
-				"enableMultipleWriteLocations": true,
-				"isVirtualNetworkFilterEnabled": false,
-				"enableAutomaticFailover": true,
-				"virtualNetworkRules": [],
-				"ipRangeFilter": "",
-				"locations": [{
+            "apiVersion": "2019-12-12",
+            "kind": "GlobalDocumentDB",
+            "type": "Microsoft.DocumentDb/databaseAccounts",
+            "name": "[parameters('cosmosDbName')]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "databaseAccountOfferType": "[parameters('cosmos_offerType')]",
+                "locations": [{
 						"id": "[concat(parameters('cosmosDbName'), '-', resourceGroup().location)]",
 						"failoverPriority": 0,
 						"locationName": "[parameters('locationName')]"
@@ -95,12 +91,20 @@
 						"locationName": "[parameters('pairedLocationName')]"
 					}
 				],
-				"dependsOn": []
-			},
-			"tags": {
-				"defaultExperience": "[parameters('defaultExperience')]"
-			}
-		},
+                "enableMultipleWriteLocations": true,
+                "isVirtualNetworkFilterEnabled": false,
+                "virtualNetworkRules": [],
+                "ipRangeFilter": "",
+                "dependsOn": [],
+                "capabilities": [],
+                "enableFreeTier": true
+            },
+            "tags": {
+                "defaultExperience": "[parameters('defaultExperience')]",
+                "hidden-cosmos-mmspecial": "",
+                "CosmosAccountType": "Non-Production"
+            }
+        },
 		{
 			"condition": "[parameters('isNew')]",
 			"apiVersion": "2016-09-01",
