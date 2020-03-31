@@ -12,10 +12,10 @@
             "value": "asp-qed-demo-app"
         },
         "sku": {
-            "value": "Shared"
+            "value": "Standard"
         },
         "skuCode": {
-            "value": "D1"
+            "value": "S1"
         },
         "workerSize": {
             "value": "1"
