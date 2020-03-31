@@ -52,6 +52,9 @@
 		},
 		"destinationSlot": {
 			"value": "production"
-		}
+		},
+		"questDeployPackageFileName": {
+			"value": "Lutron.QuickDesignPlatform.WebApi.zip"
+		},
 	}
 }

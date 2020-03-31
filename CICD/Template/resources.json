@@ -68,7 +68,11 @@
 		"isDeploy": {
 			"type": "bool",
 			"defaultValue": true
-			}
+			},
+			"questDeployPackageFileName": {
+			"type": "string",
+			"minLength": 1
+		},
 	},
 	"resources": [
 	{
@@ -142,7 +146,20 @@
 			"properties": {
 				"serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
 			}
-		}
+		},
+		{
+			"condition": "[parameters('isDeploy')]",
+			"name": "[concat(parameters('websiteName'), '/', parameters('sourceSlot'), '/MSDeploy')]",
+			"type": "Microsoft.Web/sites/slots/extensions",
+			"location": "[resourceGroup().location]",
+			"apiVersion": "2018-02-01",
+			"dependsOn": [
+				"[concat('Microsoft.Web/sites/', parameters('websiteName'), '/slots/', parameters('sourceSlot'))]"
+			],
+			"properties": {
+				"packageUri": "[concat(parameters('_artifactsLocation'), '/', parameters('questDeployPackageFileName'), parameters('_artifactsLocationSasToken'))]"
+			}
+		},
 	]
 	
 }
