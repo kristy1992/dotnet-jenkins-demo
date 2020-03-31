@@ -12,10 +12,10 @@
             "value": "asp-qed-demo-app"
         },
         "sku": {
-            "value": "Free"
+            "value": "Shared"
         },
         "skuCode": {
-            "value": "F1"
+            "value": "D1"
         },
         "workerSize": {
             "value": "1"
