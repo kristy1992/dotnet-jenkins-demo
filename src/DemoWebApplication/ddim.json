@@ -1,0 +1,803 @@
+{
+  "pages": [
+    {
+      "pageNumber": 1,
+      "label": "Details",
+      "type": "DynamicQuestion"
+    },
+    {
+      "pageNumber": 2,
+      "label": "Situation",
+      "type": "DynamicQuestion"
+    },
+    {
+      "pageNumber": 3,
+      "label": "Rooms",
+      "type": "DynamicQuestion"
+    },
+    {
+      "pageNumber": 4,
+      "label": "Report",
+      "type": "Summary"
+    }
+  ],
+  "features": [
+    {
+      "id": "PROJECTSECTION",
+      "label": "About your project",
+      "wizardStep": 1,
+      "sequence": 1,
+      "type": "Section",
+      "options": [],
+      "value": "",
+      "selectOptions": [],
+      "unit": "",
+      "placeholder": "",
+      "subheader": ""
+    },
+    {
+      "id": "PROJECTNAME",
+      "label": "Project Name",
+      "wizardStep": 1,
+      "sequence": 2,
+      "type": "Text",
+      "options": [],
+      "selectOptions": [],
+      "unit": "",
+      "placeholder": "Enter project name",
+      "value": "",
+      "validations": [
+        {
+          "type": "required"
+        },
+        {
+          "type": "minLength",
+          "value": 1
+        },
+        {
+          "type": "maxLength",
+          "value": 50
+        },
+        {
+          "type": "pattern",
+          "value": "^[a-zA-Z0-9-{}& _.#()']+$"
+        },
+        {
+          "type": "noWhiteSpaceAllowed"
+        }
+      ],
+      "estimateValuePath": "scopeOfWork.name"
+    },
+    {
+      "id": "PROJECTTYPE",
+      "label": "Project Type",
+      "wizardStep": 1,
+      "sequence": 3,
+      "type": "Options",
+      "options": [
+        {
+          "key": "COMMERCIAL_OFFICE",
+          "label": "Commercial Office"
+        },
+        {
+          "key": "K12_SCHOOL",
+          "label": "K-12 School"
+        },
+        {
+          "key": "UNIVERSITY",
+          "label": "University"
+        }
+
+      ],
+      "value": "K12_SCHOOL",
+      "selectOptions": [],
+      "unit": "",
+      "placeholder": "",
+      "estimateValuePath": "building.type"
+    },
+    {
+      "id": "SQUAREFOOTAGE",
+      "label": "Project Size",
+      "wizardStep": 1,
+      "sequence": 4,
+      "type": "Numeric",
+      "options": [],
+      "selectOptions": [],
+      "placeholder": "15000",
+      "unit": "sqft",
+      "step": 100,
+      "value": "15000",
+      "validations": [
+        {
+          "type": "required"
+        },
+        {
+          "type": "numericMinLimit",
+          "value": 1000
+        },
+        {
+          "type": "numericMaxLimit",
+          "value": 10000000
+        }
+      ],
+      "estimateValuePath": "building.areaInScope"
+    },
+    {
+      "id": "TOTALBUILDINGSQUAREFOOTAGE",
+      "label": "Building Size",
+      "wizardStep": 1,
+      "sequence": 5,
+      "type": "Numeric",
+      "options": [],
+      "selectOptions": [],
+      "placeholder": "15000",
+      "unit": "sqft",
+      "step": 100,
+      "value": "15000",
+      "validations": [
+        {
+          "type": "required"
+        },
+        {
+          "type": "numericMinLimit",
+          "value": 1000
+        },
+        {
+          "type": "numericMaxLimit",
+          "value": 10000000
+        }
+      ],
+      "estimateValuePath": "building.area"
+    },
+    {
+      "id": "FLOORCOUNT",
+      "label": "Floors in Scope",
+      "wizardStep": 1,
+      "sequence": 6,
+      "type": "Numeric",
+      "options": [],
+      "selectOptions": [],
+      "placeholder": "0",
+      "unit": "",
+      "step": 1,
+      "value": 0,
+      "validations": [
+        {
+          "type": "required"
+        },
+        {
+          "type": "numericMinLimit",
+          "value": 1
+        },
+        {
+          "type": "numericMaxLimit",
+          "value": 200
+        }
+      ],
+      "estimateValuePath": "building.numberOfFloors"
+    },
+    {
+      "id": "PROJECTLOCATION",
+      "label": "Project Location",
+      "wizardStep": 1,
+      "sequence": 7,
+      "type": "Location",
+      "value": {
+        "city": "",
+        "state": "",
+        "country": "",
+        "postalCode": ""
+      },
+      "validations": [
+        {
+          "type": "required"
+        }
+      ],
+      "estimateValuePath": "building.buildingLocation"
+    },
+    {
+      "id": "ENERGYCODE",
+      "label": "Energy Code",
+      "wizardStep": 1,
+      "sequence": 8,
+      "type": "TypeOptions",
+      "options": [
+        {
+          "key": "TITLE_24-2019",
+          "label": "Title 24 - 2019"
+        },
+        {
+          "key": "ASHRAE_90.1-2016",
+          "label": "ASHRAE 90.1-2016"
+        },
+        {
+          "key": "ASHRAE_90.1-2013",
+          "label": "ASHRAE 90.1-2013"
+        },
+        {
+          "key": "ASHRAE_90.1-2010",
+          "label": "ASHRAE 90.1-2010"
+        },
+        {
+          "key": "IECC_2018",
+          "label": "IECC 2018"
+        },
+        {
+          "key": "IECC_2015",
+          "label": "IECC 2015"
+        },
+        {
+          "key": "IECC_2012",
+          "label": "IECC 2012"
+        },
+        {
+          "key": "SEC_2015",
+          "label": "SEC 2015 (Beta)"
+        },
+        {
+          "key": "NYCECC_2016",
+          "label": "NYCECC 2016 (Beta)"
+        },
+        {
+          "key": "NECB_2017",
+          "label": "NECB 2017 (Beta)"
+        },
+        {
+          "key": "NECB_2015",
+          "label": "NECB 2015 (Beta)"
+        },
+        {
+          "key": "NECB_2011",
+          "label": "NECB 2011 (Beta)"
+        },
+        {
+          "key": "SB-10_2016",
+          "label": "ASHRAE 90.1-2013 SB-10 (Beta)"
+        }
+      ],
+      "selectOptions": [],
+      "unit": "",
+      "value": "ASHRAE_90.1-2010",
+      "placeholder": "",
+      "estimateValuePath": "scopeOfWork.energyCode"
+    },
+    {
+      "id": "CONSTRUCTIONTYPES",
+      "label": "Construction Type",
+      "wizardStep": 1,
+      "sequence": 9,
+      "type": "Options",
+      "options": [
+        {
+          "key": "NEW_CONSTRUCTION",
+          "label": "New Construction"
+        },
+        {
+          "key": "RETROFIT",
+          "label": "Retrofit"
+        }
+      ],
+      "value": "NEW_CONSTRUCTION",
+      "selectOptions": [],
+      "unit": "",
+      "placeholder": "",
+      "estimateValuePath": "building.constructionType"
+    },
+    {
+      "id": "COMPLETIONDATE",
+      "label": "Completion Date",
+      "wizardStep": 1,
+      "sequence": 10,
+      "type": "Date",
+      "value": "",
+      "validations": [
+        {
+          "type": "required"
+        }
+      ],
+      "estimateValuePath": "scopeOfWork.plannedCompletionDate"
+    },
+    {
+      "id": "PROJECTDEFAULTSSECTION",
+      "label": "Project Defaults",
+      "wizardStep": 1,
+      "sequence": 11,
+      "type": "Section",
+      "options": [],
+      "value": "",
+      "selectOptions": [],
+      "unit": ""
+    },
+    {
+      "id": "PRIMARYCEILINGTYPE",
+      "label": "Ceiling Type",
+      "wizardStep": 1,
+      "sequence": 12,
+      "type": "Options",
+      "options": [
+        {
+          "key": "HARD",
+          "label": "Hard Ceiling"
+        },
+        {
+          "key": "DROP",
+          "label": "Drop Ceiling"
+        },
+        {
+          "key": "OPEN",
+          "label": "Open Ceiling"
+        }
+      ],
+      "value": "HARD",
+      "selectOptions": [],
+      "unit": "",
+      "placeholder": "",
+      "estimateValuePath": "building.primaryCeilingType"
+    },
+    {
+      "id": "PRIMARYCONTROLTYPE",
+      "label": "Control Type",
+      "wizardStep": 1,
+      "sequence": 13,
+      "type": "Options",
+      "options": [
+        {
+          "key": "PHASE",
+          "label": "Forward Phase Control"
+        },
+        {
+          "key": "ECOSYSTEM",
+          "label": "EcoSystem Control"
+        },
+        {
+          "key": "0-10V",
+          "label": "0-10V"
+        },
+        {
+          "key": "ELV",
+          "label": "Electronic Low Voltage Control"
+        },
+        {
+          "key": "SWITCHING",
+          "label": "Non-Dimmable Control"
+        },
+        {
+          "key": "IN_FIXTURE",
+          "label": "In-Fixture Control"
+        }
+      ],
+      "value": "0-10V",
+      "selectOptions": [],
+      "unit": "",
+      "placeholder": "",
+      "estimateValuePath": "building.primaryControlType"
+    },
+    {
+      "id": "PRIMARYEMERGENCYTYPE",
+      "label": "Emergency Type",
+      "wizardStep": 1,
+      "sequence": 14,
+      "type": "Options",
+      "options": [
+        {
+          "key": "GENERATOR",
+          "label": "Generator"
+        },
+        {
+          "key": "CENTRAL_BATTERY",
+          "label": "Inverter Backup (equipment by others)"
+        },
+        {
+          "key": "NONE",
+          "label": "None"
+        },
+        {
+          "key": "FIXTURE_BATTERY",
+          "label": "Fixture Battery (equipment by others)"
+        }
+      ],
+      "value": "GENERATOR",
+      "selectOptions": [],
+      "unit": "",
+      "placeholder": "",
+      "estimateValuePath": "building.primaryEmergencyType"
+    },
+    {
+      "id": "PRIMARYPROJECTVOLTAGE",
+      "label": "Fixture Voltage",
+      "wizardStep": 1,
+      "sequence": 15,
+      "type": "Options",
+      "options": [
+        {
+          "key": 120,
+          "label": "120 V"
+        },
+        {
+          "key": 277,
+          "label": "277 V"
+        }
+      ],
+      "value": 277,
+      "selectOptions": [],
+      "unit": "",
+      "placeholder": "",
+      "estimateValuePath": "building.projectVoltage"
+    },
+    {
+      "id": "CRITERIAMAINSECTION",
+      "label": "Your project situation",
+      "wizardStep": 2,
+      "sequence": 1,
+      "type": "Section",
+      "options": [],
+      "value": "",
+      "selectOptions": [],
+      "unit": "",
+      "placeholder": ""
+    },
+    {
+      "id": "CRITERIASECTION",
+      "label": "Select all that apply to your project.",
+      "wizardStep": 2,
+      "sequence": 2,
+      "type": "MultiOptionCheckbox",
+      "options": [
+        {
+          "key": "BASIC_ENERGY",
+          "label": "I just want to meet the Energy Code requirements",
+          "isSelected": false
+        },
+        {
+          "key": "FUTURE_PROOF",
+          "label": "My client is willing to pay a premium for more features",
+          "isSelected": false
+        },
+        {
+          "key": "LOWEST_LABOR",
+          "label": "I want to minimize labor cost",
+          "isSelected": false
+        },
+        {
+          "key": "LOWEST_PRODUCT_COST",
+          "label": "I want to minimize product cost",
+          "isSelected": false
+        },
+        {
+          "key": "LEARN_MORE",
+          "label": "I need help selecting fixtures on this job",
+          "isSelected": false
+        },
+        {
+          "key": "NEED_STARTUP",
+          "label": "I want to request Lutron startup",
+          "isSelected": false
+        }
+      ],
+      "value": [ "" ],
+      "selectOptions": [],
+      "unit": "",
+      "placeholder": "",
+      "estimateValuePath": "scopeOfWork.situations"
+    },
+    {
+      "id": "ROOMTYPES",
+      "label": "Your rooms",
+      "wizardStep": 3,
+      "sequence": 1,
+      "type": "Section",
+      "options": [],
+      "value": "",
+      "selectOptions": [],
+      "unit": "",
+      "placeholder": ""
+    },
+    {
+      "id": "ROOMS",
+      "label": "Rooms",
+      "wizardStep": 3,
+      "sequence": 2,
+      "type": "RoomType",
+      "estimateValuePath": "roomTypes",
+      "value": [],
+      "supportingData": {
+        "ceilings": [
+          {
+            "type": "HARD",
+            "label": "Hard Ceiling",
+            "isSelected": false,
+            "details": ""
+          },
+          {
+            "type": "DROP",
+            "label": "Drop Ceiling",
+            "isSelected": false,
+            "details": ""
+          },
+          {
+            "type": "OPEN",
+            "label": "Open Ceiling",
+            "isSelected": false,
+            "details": ""
+          }
+        ],
+        "functions": [
+          {
+            "type": "MANUAL_CONTROL",
+            "label": "Manual control",
+            "isSelected": false,
+            "details": ""
+          },
+          {
+            "type": "DIMMING",
+            "label": "Dimming",
+            "isSelected": false,
+            "details": ""
+          },
+          {
+            "type": "SCHEDULING",
+            "label": "Timeclock scheduling",
+            "isSelected": false,
+            "details": ""
+          },
+          {
+            "type": "OCCUPANCY",
+            "label": "Occupancy sensing",
+            "isSelected": false,
+            "details": ""
+          },
+          {
+            "type": "VACANCY",
+            "label": "Vacancy sensing",
+            "isSelected": false,
+            "details": ""
+          },
+          {
+            "type": "RECEPTACLE_CONTROL",
+            "label": "Receptacle control",
+            "isSelected": false,
+            "details": ""
+          },
+          {
+            "type": "DAYLIGHTING",
+            "label": "Daylighting",
+            "isSelected": false,
+            "details": ""
+          },
+          {
+            "type": "LOAD_SHED",
+            "label": "Load shedding",
+            "isSelected": false,
+            "details": ""
+          }
+        ],
+        "types": [
+          {
+            "roomType": "ATRIUM",
+            "label": "Atrium"
+          },
+          {
+            "roomType": "BREAK_ROOM",
+            "label": "Break Room"
+          },
+          {
+            "roomType": "CLASSROOM",
+            "label": "Classroom"
+          },
+          {
+            "roomType": "CONFERENCE_ROOM",
+            "label": "Conference Room"
+          },
+          {
+            "roomType": "COPY_ROOM",
+            "label": "Copy Room"
+          },
+          {
+            "roomType": "EGRESS_CORRIDOR",
+            "label": "Corridor"
+          },
+          {
+            "roomType": "ELECTRICAL_MECHANICAL_ROOM",
+            "label": "Electrical Mechanical Room"
+          },
+          {
+            "roomType": "GUESTROOM",
+            "label": "Guest Room"
+          },
+          {
+            "roomType": "JANITORIAL_CLOSET",
+            "label": "Janitorial Closet"
+          },
+          {
+            "roomType": "LABORATORIES",
+            "label": "Laboratory"
+          },
+          {
+            "roomType": "LIBRARY_READING_ROOMS",
+            "label": "Library Reading Room"
+          },
+          {
+            "roomType": "LIBRARY_STACKS",
+            "label": "Library Stack"
+          },
+          {
+            "roomType": "LOBBY",
+            "label": "Lobby"
+          },
+          {
+            "roomType": "LOCKER_ROOM",
+            "label": "Locker Room"
+          },
+          {
+            "roomType": "LOUNGE",
+            "label": "Lounge"
+          },
+          {
+            "roomType": "MULTIPURPOSE_ROOM",
+            "label": "Multipurpose Room"
+          },
+          {
+            "roomType": "OPEN_OFFICE",
+            "label": "Open Office"
+          },
+          {
+            "roomType": "PARKING_GARAGE",
+            "label": "Parking Garage"
+          },
+          {
+            "roomType": "PRIVATE_OFFICE",
+            "label": "Private Office"
+          },
+          {
+            "roomType": "RESTROOM",
+            "label": "Restroom"
+          },
+          {
+            "roomType": "STAIRWELL",
+            "label": "Stairwell"
+          },
+          {
+            "roomType": "STORAGE_ROOM",
+            "label": "Storage Room"
+          },
+          {
+            "roomType": "WAREHOUSE",
+            "label": "Warehouse"
+          }
+        ],
+        "fixtures": {
+          "type": [
+            {
+              "key": "TROFFER_2X4",
+              "label": "2x4 Troffer",
+              "fixtureWattage": "50"
+            },
+            {
+              "key": "DOWNLIGHT",
+              "label": "Downlight",
+              "fixtureWattage": "30"
+            },
+            {
+              "key": "TROFFER_2X2",
+              "label": "2x2 Troffer",
+              "fixtureWattage": "50"
+            },
+            {
+              "key": "PENDANT",
+              "label": "Pendant",
+              "fixtureWattage": "50"
+            },
+            {
+              "key": "COVE",
+              "label": "Cove",
+              "fixtureWattage": "50"
+            },
+            {
+              "key": "OTHER",
+              "label": "Other",
+              "fixtureWattage": "50"
+            }
+          ],
+          "controlType": [
+            {
+              "key": "PHASE",
+              "label": "Forward Phase Control"
+            },
+            {
+              "key": "ECOSYSTEM",
+              "label": "EcoSystem Control"
+            },
+            {
+              "key": "0-10V",
+              "label": "0-10V"
+            },
+            {
+              "key": "ELV",
+              "label": "Electronic Low Voltage"
+            },
+            {
+              "key": "SWITCHING",
+              "label": "Non-Dimmable Control"
+            },
+            {
+              "key": "IN_FIXTURE",
+              "label": "In-Fixture Control"
+            }
+          ],
+          "emergency": [
+            {
+              "key": "NONE",
+              "label": "None"
+            },
+            {
+              "key": "GENERATOR",
+              "label": "Generator"
+            },
+            {
+              "key": "CENTRAL_BATTERY",
+              "label": "Inverter Backup (equipment by others)"
+            },
+            {
+              "key": "FIXTURE_BATTERY",
+              "label": "Fixture Battery (equipment by others)"
+            }
+          ],
+          "voltage": [
+            {
+              "key": 120,
+              "label": "120 V"
+            },
+            {
+              "key": 277,
+              "label": "277 V"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "solutionInfo": [
+    {
+      "solutionType": "IN_WALL_DIMMING",
+      "name": "Wall Mounted Zone Dimming",
+      "description": "Simple to install. Wires like a traditional wall switch.",
+      "videoUrl": "https://www.youtube.com/embed/3pCooI1jAFQ",
+      "longDescription": "Vive in wall dimmers and switches can replace an existing switch in the wallbox. The high voltage circuit wiring determines the zoning.  Wireless occupancy and daylight sensors communicate to the in wall dimmers for automated control. Pico wireless keypads are used for local control and can be easily mounted over existing wallboxes, or where no wallbox exists.  The Vive wireless hub can be optionally added for advanced system features like timeclock, demand response, and simple setup software that works on any smart device.  "
+    },
+    {
+      "solutionType": "ON_FIXTURE",
+      "name": "Individual Fixture Control",
+      "description": "Maximum system flexibility. ",
+      "videoUrl": "https://www.youtube.com/embed/5EDeXqHHzUU",
+      "longDescription": "Vive PowPaks are installed on each fixture in the field, enabling system zoning entirely via programming, making this solution an excellent choice when project details are likely to change.     Pico wireless keypads are used for local control and can be easily mounted over existing wallboxes, or where no wallbox exists.     The Vive wireless hub can be optionally added for advanced system features like timeclock, demand response, and simple setup Software that works on any smart device.  "
+    },
+    {
+      "solutionType": "IN_FIXTURE",
+      "name": "Integral Fixture Control",
+      "description": "Lowest labor cost. Maximum system flexibility.",
+      "videoUrl": "https://www.youtube.com/embed/6fq1ckbdDk0",
+      "longDescription": "Vive Integral Fixture Controllers with occupancy and daylight sensors arrive fully installed in the fixture from the factory, meaning that system design amounts to little more than counting your fixtures and step and repeat installation. Pico wireless keypads are used for local control and can be easily mounted over existing wallboxes, or where no wallbox exists.    The Vive wireless hub can be optionally added for advanced system features like timeclock, demand response, and simple setup software that works on any smart device.  "
+    },
+    {
+      "solutionType": "IN_CEILING_SWITCHING",
+      "name": "Ceiling Mounted Zone Switching",
+      "description": "No need to pull wires though the wall. Low installed cost for basic switching.",
+      "videoUrl": "https://www.youtube.com/embed/KMN-CA0d4wg",
+      "longDescription": "Vive PowPaks are installed on junction boxes above the ceiling and connected to the switch leg. Pico wireless keypads are used for local control and can be easily mounted over existing wallboxes, or where no wallbox exists. Fixtures on the same switch leg will be controlled together as a zone."
+    },
+    {
+      "solutionType": "IN_WALL_SWITCHING",
+      "name": "Wall Mounted Switching",
+      "description": "Lowest installed cost for basic control. Excellent choice for retrofit.",
+      "videoUrl": "https://www.youtube.com/embed/CeC0uar_W1k",
+      "longDescription": "Vive Maestro wireless switches are installed in existing wallboxes using existing wiring. Wireless sensors help you meet code without pulling additional wire.     Pico wireless keypads can be easily added for additional points of control."
+    },
+    {
+      "solutionType": "IN_CEILING_DIMMING",
+      "name": "Ceiling Mounted Zone Dimming",
+      "description": "No need to pull low-voltage wires though the wall.",
+      "videoUrl": "https://www.youtube.com/embed/bHI1PXvqpXc",
+      "longDescription": "Vive PowPaks are installed on junction boxes above the ceiling and low voltage 0-10V control wires are routed to each fixture. Pico wireless keypads are used for local control and can be easily mounted over existing wallboxes, or where no wallbox exists. Fixtures sharing the same 0-10V wiring will be controlled together as a zone."
+    }
+  ]
+}
