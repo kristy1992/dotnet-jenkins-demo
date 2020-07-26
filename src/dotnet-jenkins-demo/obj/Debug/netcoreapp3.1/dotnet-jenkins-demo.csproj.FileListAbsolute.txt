@@ -33,3 +33,40 @@ D:\DevOps Training\DemoPipeline\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\
 D:\DevOps Training\DemoPipeline\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\dotnet-jenkins-demo.dll
 D:\DevOps Training\DemoPipeline\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\dotnet-jenkins-demo.pdb
 D:\DevOps Training\DemoPipeline\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\dotnet-jenkins-demo.csproj.CopyComplete
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\bin\Debug\netcoreapp3.1\dotnet-jenkins-demo.exe
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\bin\Debug\netcoreapp3.1\dotnet-jenkins-demo.deps.json
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\bin\Debug\netcoreapp3.1\dotnet-jenkins-demo.runtimeconfig.json
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\bin\Debug\netcoreapp3.1\dotnet-jenkins-demo.runtimeconfig.dev.json
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\bin\Debug\netcoreapp3.1\dotnet-jenkins-demo.dll
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\bin\Debug\netcoreapp3.1\dotnet-jenkins-demo.pdb
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\bin\Debug\netcoreapp3.1\dotnet-jenkins-demo.Views.dll
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\bin\Debug\netcoreapp3.1\dotnet-jenkins-demo.Views.pdb
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\dotnet-jenkins-demo.csprojAssemblyReference.cache
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\dotnet-jenkins-demo.csproj.CoreCompileInputs.cache
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\dotnet-jenkins-demo.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\dotnet-jenkins-demo.RazorAssemblyInfo.cache
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\dotnet-jenkins-demo.RazorAssemblyInfo.cs
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\dotnet-jenkins-demo.AssemblyInfoInputs.cache
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\dotnet-jenkins-demo.AssemblyInfo.cs
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\dotnet-jenkins-demo.TagHelpers.input.cache
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\dotnet-jenkins-demo.TagHelpers.output.cache
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\dotnet-jenkins-demo.RazorCoreGenerate.cache
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\Razor\Pages\Error.cshtml.g.cs
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\Razor\Pages\Index.cshtml.g.cs
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\Razor\Pages\Privacy.cshtml.g.cs
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_Layout.cshtml.g.cs
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\Razor\Pages\_ViewImports.cshtml.g.cs
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\Razor\Pages\_ViewStart.cshtml.g.cs
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\dotnet-jenkins-demo.RazorTargetAssemblyInfo.cache
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\dotnet-jenkins-demo.RazorTargetAssemblyInfo.cs
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\dotnet-jenkins-demo.Views.pdb
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\staticwebassets\dotnet-jenkins-demo.StaticWebAssets.Manifest.cache
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\staticwebassets\dotnet-jenkins-demo.StaticWebAssets.xml
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\dotnet-jenkins-demo.dll
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\dotnet-jenkins-demo.pdb
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\dotnet-jenkins-demo.genruntimeconfig.cache
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\dotnet-jenkins-demo\obj\Debug\netcoreapp3.1\dotnet-jenkins-demo.csproj.CopyComplete

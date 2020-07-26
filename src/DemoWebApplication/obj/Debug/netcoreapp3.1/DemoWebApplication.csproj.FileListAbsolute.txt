@@ -92,3 +92,4 @@ C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\DemoWebApplication\obj\
 C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\DemoWebApplication\obj\Debug\netcoreapp3.1\DemoWebApplication.dll
 C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\DemoWebApplication\obj\Debug\netcoreapp3.1\DemoWebApplication.pdb
 C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\DemoWebApplication\obj\Debug\netcoreapp3.1\DemoWebApplication.genruntimeconfig.cache
+C:\Users\kristy\Documents\GitHub\dotnet-jenkins-demo\src\DemoWebApplication\bin\Debug\netcoreapp3.1\ddim.json

@@ -28,5 +28,7 @@ namespace DemoWebApplication.Controller
         {
             return System.IO.File.ReadAllText(DDIM_FilePath);
         }
+
+        #endregion
     }
 }
